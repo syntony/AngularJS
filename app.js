@@ -31,7 +31,33 @@ angularApp.controller('mainController', [
   '$log',
   'nameService',
   function ($scope, $log, nameService) {
-    $scope.name = nameService.name;
+    $scope.people = [
+      {
+        name: nameService.name,
+        address: '111 Main St.',
+        city: 'New York',
+        state: 'NY',
+        zip: '11111'
+      },
+      {
+        name: 'Jane Doe',
+        address: '222 Second St.',
+        city: 'New York',
+        state: 'NY',
+        zip: '22222'
+      },
+      {
+        name: 'James Doe',
+        address: '333 Third St.',
+        city: 'New York',
+        state: 'NY',
+        zip: '33333'
+      },
+    ];
+    $scope.formattedAddress = function(person) {
+      return person.address + ', ' + person.city + ', ' +
+        person.state + ' ' + person.zip;
+    }
     $scope.$watch('name', function() {
       nameService.name = $scope.name;
     })
@@ -51,3 +77,15 @@ angularApp.controller('secondController', [
     })
   }
 ]);
+
+angularApp.directive('searchResult', function() {
+  return {
+    restrict: 'AECM',
+    templateUrl: 'directives/searchresult.html',
+    replace: true,
+    scope: {
+      person: "=personObject",
+      formattedAddressFunction: "&",
+    },
+  }
+});
