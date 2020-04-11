@@ -87,5 +87,40 @@ angularApp.directive('searchResult', function() {
       person: "=personObject",
       formattedAddressFunction: "&",
     },
+    // compile: function(elem, attrs) {
+    //   console.log('Compiling');
+    //   // elem.removeAttr('class');
+    //   console.log(elem.html());
+    //   return {
+    //     // USING THIS IS NOT SAFE!!!
+    //     //
+    //     // pre: function(scope, elements, attrs) {
+    //     //   console.log('Pre-compiling');
+    //     //   console.log(elements);
+    //     // },
+    //     post: function(scope, elements, attrs) {
+    //       console.log('Post-compiling');
+    //
+    //       console.log(scope);
+    //
+    //       if (scope.person.name === 'Jane Doe') {
+    //         elements.removeAttr('class');
+    //       }
+    //
+    //       console.log(elements);
+    //     },
+    //   }
+    // },
+    link: function(scope, elements, attrs) {
+      console.log('Linking');
+
+      console.log(scope);
+
+      if (scope.person.name === 'Jane Doe') {
+        elements.removeAttr('class');
+      }
+
+      console.log(elements);
+    },
   }
 });
