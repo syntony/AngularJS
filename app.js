@@ -1,10 +1,13 @@
 // MODULE
-var angularApp = angular.module('angularApp', []);
-
-// CONTROLLERS
-angularApp.controller('mainController', [
-  '$scope',
-  function ($scope) {
-
-  }
+var weatherApp = angular.module('weatherApp', [
+  'ngRoute',
+  'ngResource'
 ]);
+
+
+
+
+
+
+
+
